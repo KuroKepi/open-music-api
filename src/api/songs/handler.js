@@ -92,26 +92,13 @@ class SongsHandler {
     }
   }
 
-  async deleteSongsByIdHandler(req, h) {
-    try {
-      const { id } = req.params;
-      await this.service.deleteSongsById(id);
-      return {
-        status: 'success',
-        message: 'Song berhasil dihapus',
-      };
-    } catch (error) {
-      if (error instanceof NotFoundError) {
-        return h.response({
-          status: 'fail',
-          message: error.message,
-        }).code(404);
-      }
-      return h.response({
-        status: 'fail',
-        message: error.message,
-      }).code(400);
-    }
+  async deleteSongsByIdHandler(req) {
+    const { id } = req.params;
+    await this.service.deleteSongsById(id);
+    return {
+      status: 'success',
+      message: 'Song berhasil dihapus',
+    };
   }
 }
 

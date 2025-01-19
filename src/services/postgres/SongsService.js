@@ -84,9 +84,8 @@ class SongsService {
     };
     const result = await this.pool.query(query);
     if (!result.rows.length) {
-      throw new NotFoundError('Gagal menghapus lagu');
+      throw new NotFoundError('Lagu gagal dihapus. Id tidak ditemukan');
     }
-    return result.rows.map(mapSongsDBToModel)[0];
   }
 }
 
